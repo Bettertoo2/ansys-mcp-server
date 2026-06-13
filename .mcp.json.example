@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ansys-mcp": {
+      "command": "<your-python-path>",
+      "args": ["-u", "<your-server-py-path>/server.py"],
+      "env": {
+        "AWP_ROOT242": "<your-ansys-install-path>",
+        "PYTHONUNBUFFERED": "1"
+      }
+    }
+  }
+}

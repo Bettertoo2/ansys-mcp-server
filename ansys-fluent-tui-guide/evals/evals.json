@@ -1,0 +1,35 @@
+{
+  "skill_name": "ansys-fluent-tui-guide",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我需要在 ANSYS Fluent 中设置网格大小。应该使用什么 TUI 命令？请告诉我完整的命令语法和一个实际使用例子。",
+      "expected_output": "应该返回 /mesh/size 命令，解释其语法，并提供一个具体的使用示例，例如 /mesh/size 0.5",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我想要构建一个网格导入和检查的工作流。从读取网格文件开始，设置网格大小为 0.25，然后检查网格质量。请提供正确的 TUI 命令序列。",
+      "expected_output": "应该提供一系列正确的命令：/file/read-case, /mesh/size, /diagnostics/check-mesh-quality，并解释每一步的目的。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "我需要在 CFD 求解器中设置入口边界条件。入口的速度应该是 10 m/s，温度是 300 K。请给出相应的 TUI 命令。",
+      "expected_output": "应该给出 /define/boundary-conditions/inlet velocity-inlet 和相关的设置速度和温度的命令。",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "如何验证我输入的以下 TUI 命令是否正确？/mesh/size 0.5；/mesh/check；/report/mesh-statistics",
+      "expected_output": "应该验证命令语法，指出这是有效的命令序列，并解释每个命令的作用。",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "我需要为 Fluent 创建一个自动化脚本来：1. 读取网格，2. 定义水作为流体，3. 设置 Spalart-Allmaras 湍流模型，4. 运行 500 次迭代。给出完整的命令序列。",
+      "expected_output": "应该提供完整的工作流，包括所有必需的 TUI 命令，可以保存为 .jou 文件。",
+      "files": []
+    }
+  ]
+}

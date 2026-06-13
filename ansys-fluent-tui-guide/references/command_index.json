@@ -1,0 +1,253 @@
+{
+  "skill_metadata": {
+    "name": "ansys-fluent-tui-guide",
+    "version": "1.0",
+    "created": "2026-06-10",
+    "last_updated": "2026-06-10",
+    "fluent_version": "2024 R2"
+  },
+  "command_reference": {
+    "meshing_mode": {
+      "categories": 13,
+      "categories_list": [
+        "boundary",
+        "cad-assemblies",
+        "diagnostics",
+        "display",
+        "file",
+        "material-point",
+        "mesh",
+        "objects",
+        "parallel",
+        "preferences",
+        "report",
+        "scoped-sizing",
+        "size-functions"
+      ],
+      "total_commands_estimated": 150
+    },
+    "solution_mode": {
+      "categories": 15,
+      "categories_list": [
+        "adjoint",
+        "define",
+        "display",
+        "file",
+        "mesh",
+        "parallel",
+        "plot",
+        "preferences",
+        "report",
+        "server",
+        "solve",
+        "surface",
+        "turbo-workflow",
+        "turbo-post",
+        "views"
+      ],
+      "total_commands_estimated": 200
+    },
+    "total_commands": 300
+  },
+  "quick_workflows": [
+    {
+      "name": "mesh_import_setup",
+      "description": "Import and prepare mesh for solving",
+      "commands": [
+        "/file/read-case \"mesh.cas\"",
+        "/mesh/size 0.5",
+        "/mesh/check",
+        "/report/mesh-statistics"
+      ]
+    },
+    {
+      "name": "physics_definition",
+      "description": "Define physics models and materials",
+      "commands": [
+        "/define/models/turbulence spalart-allmaras yes",
+        "/define/materials/fluid water",
+        "/define/operating-conditions/pressure 101325"
+      ]
+    },
+    {
+      "name": "boundary_conditions",
+      "description": "Set up inlet and outlet conditions",
+      "commands": [
+        "/define/boundary-conditions/inlet velocity-inlet",
+        "/define/boundary-conditions/inlet/velocity 5.0",
+        "/define/boundary-conditions/outlet pressure-outlet"
+      ]
+    },
+    {
+      "name": "solve_and_visualize",
+      "description": "Run solver and display results",
+      "commands": [
+        "/solve/initialize/initialize-flow",
+        "/solve/iterate 500",
+        "/display/contour velocity-magnitude",
+        "/file/write-case \"results.cas\""
+      ]
+    }
+  ],
+  "command_abbreviations": {
+    "mesh_size": "m/s",
+    "file_read_case": "f/r",
+    "file_write_case": "f/w",
+    "solve_iterate": "s/i",
+    "display_contour": "d/c",
+    "define_materials": "d/m",
+    "define_boundary_conditions": "d/b",
+    "solve_initialize": "s/in",
+    "report_mesh_statistics": "r/m"
+  },
+  "document_structure": {
+    "main_skill": {
+      "file": "SKILL.md",
+      "size_kb": "~100",
+      "content": "Main Skill documentation with fundamentals, workflows, and usage guidance"
+    },
+    "references": [
+      {
+        "file": "ANSYS_Fluent_TUI_Complete_Reference.md",
+        "size_kb": "~500",
+        "content": "Complete TUI command reference extracted from official ANSYS documentation"
+      },
+      {
+        "file": "QUICK_START_CN.md",
+        "size_kb": "~100",
+        "content": "Quick start guide in Chinese with common workflows and tips"
+      },
+      {
+        "file": "COMMAND_QUICK_REFERENCE.md",
+        "size_kb": "~150",
+        "content": "Quick reference tables for both meshing and solution mode commands"
+      },
+      {
+        "file": "README.md",
+        "size_kb": "~80",
+        "content": "Overview and navigation guide for the entire skill"
+      },
+      {
+        "file": "command_index.json",
+        "size_kb": "~50",
+        "content": "Structured JSON index of all command categories and workflows"
+      }
+    ],
+    "scripts": [
+      {
+        "file": "fluent_tui_helper.py",
+        "language": "Python",
+        "description": "Helper tool for command validation and lookup"
+      },
+      {
+        "file": "create_example_scripts.sh",
+        "language": "Bash",
+        "description": "Script generator for creating example .jou files (Linux/Mac)"
+      },
+      {
+        "file": "create_example_scripts.bat",
+        "language": "Batch",
+        "description": "Script generator for creating example .jou files (Windows)"
+      }
+    ],
+    "evaluations": [
+      {
+        "file": "evals.json",
+        "count": 5,
+        "description": "Test cases for validating Skill functionality"
+      }
+    ]
+  },
+  "data_types": {
+    "numeric": {
+      "format": "Integer or decimal number",
+      "examples": [
+        "/mesh/size 0.5",
+        "/solve/iterate 1000"
+      ]
+    },
+    "string": {
+      "format": "Text, quoted if contains spaces",
+      "examples": [
+        "/file/read-case \"my mesh.cas\"",
+        "/define/materials/fluid water"
+      ]
+    },
+    "symbol": {
+      "format": "Predefined keyword",
+      "examples": [
+        "/define/boundary-conditions/inlet velocity-inlet",
+        "/display/set-view top"
+      ]
+    },
+    "list": {
+      "format": "Multiple values in parentheses",
+      "examples": [
+        "/report/surface-integrals (outlet1 outlet2)"
+      ]
+    },
+    "boolean": {
+      "format": "yes/no or true/false",
+      "examples": [
+        "/define/models/turbulence/spalart-allmaras yes"
+      ]
+    }
+  },
+  "common_patterns": {
+    "file_operations": {
+      "read_case": "/file/read-case \"filename.cas\"",
+      "write_case": "/file/write-case \"filename.cas\"",
+      "read_mesh": "/file/read-mesh \"filename.msh\"",
+      "export_mesh": "/file/export-mesh \"filename.msh\""
+    },
+    "mesh_operations": {
+      "set_size": "/mesh/size 0.5",
+      "create_boundary": "/mesh/create-boundary",
+      "create_volume": "/mesh/create-volume",
+      "check_mesh": "/mesh/check"
+    },
+    "physics_setup": {
+      "turbulence_sa": "/define/models/turbulence spalart-allmaras yes",
+      "material_water": "/define/materials/fluid water",
+      "set_pressure": "/define/operating-conditions/pressure 101325"
+    },
+    "boundary_conditions": {
+      "velocity_inlet": "/define/boundary-conditions/inlet velocity-inlet",
+      "set_velocity": "/define/boundary-conditions/inlet/velocity 5.0",
+      "pressure_outlet": "/define/boundary-conditions/outlet pressure-outlet"
+    },
+    "solving": {
+      "initialize": "/solve/initialize/initialize-flow",
+      "iterate": "/solve/iterate 500",
+      "check_convergence": "/solve/converged"
+    },
+    "visualization": {
+      "velocity_contour": "/display/contour velocity-magnitude",
+      "pressure_contour": "/display/contour pressure",
+      "vectors": "/display/vector velocity"
+    },
+    "reporting": {
+      "mesh_stats": "/report/mesh-statistics",
+      "force_coeffs": "/report/force-coefficients",
+      "surface_integrals": "/report/surface-integrals"
+    }
+  },
+  "skill_triggering_keywords": [
+    "ANSYS Fluent",
+    "Fluent TUI",
+    "Text User Interface",
+    "TUI command",
+    "Fluent command",
+    "fluent script",
+    "journal file",
+    ".jou file",
+    "mesh setup",
+    "CFD simulation",
+    "Fluent automation",
+    "fluent batch",
+    "mesh generation",
+    "solver configuration",
+    "boundary conditions",
+    "computational fluid dynamics"
+  ]
+}
