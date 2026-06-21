@@ -1,5 +1,7 @@
 # ANSYS MCP Server
+
 **❗本项目目前处于测试阶段**
+
 ANSYS MCP Server 是一个基于 Model Context Protocol (MCP) 的服务器，用于驱动 ANSYS 系列仿真软件，包括 Fluent、Mechanical 和 Geometry。
 
 内置 **[ansys-fluent-tui-guide](./ansys-fluent-tui-guide/)** Skill，自动将每个 MCP 操作映射为对应的 TUI 命令，并生成可复现的 `.jou` 脚本。
